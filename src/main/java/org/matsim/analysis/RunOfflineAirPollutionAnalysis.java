@@ -54,28 +54,19 @@ public class RunOfflineAirPollutionAnalysis {
 	private final String analysisOutputDirectory;
 
 	public static void main(String[] args) {
-				
-		if (args.length == 1) {
-			String rootDirectory = args[0];
-			if (!rootDirectory.endsWith("/")) rootDirectory = rootDirectory + "/";
-			
-			final String runDirectory = "public-svn/matsim/scenarios/countries/de/berlin/berlin-v5.4-10pct/output-berlin-v5.4-10pct/";	
-			final String runId = "berlin-v5.4-10pct";
+			final String runDirectory = "C:\\Users\\tekuh\\OneDrive\\Master\\Matsim\\matsim-berlin-homework2\\scenarios\\berlin-v5.5-1pct-without_a100\\output-berlin-v5.5-1pct\\";
+			final String runId = "berlin-v5.5-1pct";
 
-			final String hbefaFileCold = "shared-svn/projects/matsim-germany/hbefa/hbefa-files/v3.2/EFA_ColdStart_vehcat_2005average.txt";
-			final String hbefaFileWarm = "shared-svn/projects/matsim-germany/hbefa/hbefa-files/v3.2/EFA_HOT_vehcat_2005average.txt";
+			final String hbefaFileCold = "C:\\Users\\tekuh\\OneDrive\\Master\\Matsim\\hbefa-files\\EFA_ColdStart_Vehcat_2020_Average.csv";
+			final String hbefaFileWarm = "C:\\Users\\tekuh\\OneDrive\\Master\\Matsim\\hbefa-files\\EFA_HOT_Vehcat_2020_Average.csv";
 			
 			RunOfflineAirPollutionAnalysis analysis = new RunOfflineAirPollutionAnalysis(
-					rootDirectory + runDirectory,
+					runDirectory,
 					runId,
-					rootDirectory + hbefaFileWarm,
-					rootDirectory + hbefaFileCold,
-					rootDirectory + runDirectory);
+					hbefaFileWarm,
+					hbefaFileCold,
+					runDirectory);
 			analysis.run();
-			
-		} else {
-			throw new RuntimeException("Please set the root directory. Aborting...");
-		}
 	}
 	
 	public RunOfflineAirPollutionAnalysis(String runDirectory, String runId, String hbefaFileWarm, String hbefaFileCold, String analysisOutputDirectory) {
@@ -95,7 +86,7 @@ public class RunOfflineAirPollutionAnalysis {
 		config.network().setInputFile(runDirectory + runId + ".output_network.xml.gz");
 		config.transit().setTransitScheduleFile(runDirectory + runId + ".output_transitSchedule.xml.gz");
 		config.transit().setVehiclesFile(runDirectory + runId + ".output_transitVehicles.xml.gz");
-		config.global().setCoordinateSystem("GK4");
+		config.global().setCoordinateSystem("EPSG:31468");
 		config.plans().setInputFile(null);
 		config.parallelEventHandling().setNumberOfThreads(null);
 		config.parallelEventHandling().setEstimatedNumberOfEvents(null);

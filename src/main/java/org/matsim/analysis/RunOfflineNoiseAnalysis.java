@@ -41,11 +41,11 @@ public class RunOfflineNoiseAnalysis {
 	private final String runId;
 	private final String analysisOutputDirectory;
 	
-//	private final String tunnelLinkIdFile = "https://svn.vsp.tu-berlin.de/repos/public-svn/matsim/scenarios/countries/de/berlin/berlin-v5.4-10pct/input/berlin-v5.1.tunnel-linkIDs.csv";
-	private final String tunnelLinkIdFile = null;
+	private final String tunnelLinkIdFile = "C:\\Users\\tekuh\\OneDrive\\Master\\Matsim\\hbefa-files\\osm-buildings-dissolved.geojson";
+//	private final String tunnelLinkIdFile = null;
 
-//	private final String noiseBarriersFile = "https://svn.vsp.tu-berlin.de/repos/public-svn/matsim/scenarios/countries/de/berlin/berlin-v5.5-10pct/input/berlin-buildings/osm-buildings-dissolved.geojson";
-	private final String noiseBarriersFile = null;
+	private final String noiseBarriersFile = "C:\\Users\\tekuh\\OneDrive\\Master\\Matsim\\hbefa-files\\osm-buildings-dissolved.geojson";
+//	private final String noiseBarriersFile = null;
 
 	public RunOfflineNoiseAnalysis(String runDirectory, String runId, String analysisOutputDirectory) {
 		this.runDirectory = runDirectory;
@@ -57,8 +57,8 @@ public class RunOfflineNoiseAnalysis {
 
 	public static void main(String[] args) {
 		
-		final String runDirectory = "https://svn.vsp.tu-berlin.de/repos/public-svn/matsim/scenarios/countries/de/berlin/berlin-v5.4-1pct/output-berlin-v5.4-1pct/";
-		final String runId = "berlin-v5.4-1pct";
+		final String runDirectory = "C:\\Users\\tekuh\\OneDrive\\Master\\Matsim\\matsim-berlin-homework2\\scenarios\\berlin-v5.5-1pct-without_a100\\output-berlin-v5.5-1pct\\";
+		final String runId = "berlin-v5.5-1pct";
 		
 		RunOfflineNoiseAnalysis analysis = new RunOfflineNoiseAnalysis(runDirectory, runId, "./scenario/");
 		analysis.run();
@@ -69,7 +69,7 @@ public class RunOfflineNoiseAnalysis {
 		double timeBinSize = 3600.;
 		
 		Config config = ConfigUtils.createConfig(new NoiseConfigGroup());
-		config.global().setCoordinateSystem("GK4");
+		config.global().setCoordinateSystem("EPSG:31468");
 		config.network().setInputFile(runDirectory + runId + ".output_network.xml.gz");
 		config.plans().setInputFile(runDirectory + runId + ".output_plans.xml.gz");
 		config.controler().setOutputDirectory(runDirectory);
