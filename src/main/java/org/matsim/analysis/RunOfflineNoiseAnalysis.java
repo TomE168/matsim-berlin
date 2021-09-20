@@ -41,7 +41,7 @@ public class RunOfflineNoiseAnalysis {
 	private final String runId;
 	private final String analysisOutputDirectory;
 	
-	private final String tunnelLinkIdFile = "C:\\Users\\tekuh\\OneDrive\\Master\\Matsim\\hbefa-files\\osm-buildings-dissolved.geojson";
+	private final String tunnelLinkIdFile = "C:\\Users\\tekuh\\OneDrive\\Master\\Matsim\\hbefa-files\\berlin-v5.1.tunnel-linkIDs.xlsx";
 //	private final String tunnelLinkIdFile = null;
 
 	private final String noiseBarriersFile = "C:\\Users\\tekuh\\OneDrive\\Master\\Matsim\\hbefa-files\\osm-buildings-dissolved.geojson";
@@ -50,7 +50,6 @@ public class RunOfflineNoiseAnalysis {
 	public RunOfflineNoiseAnalysis(String runDirectory, String runId, String analysisOutputDirectory) {
 		this.runDirectory = runDirectory;
 		this.runId = runId;
-		
 		if (!analysisOutputDirectory.endsWith("/")) analysisOutputDirectory = analysisOutputDirectory + "/";
 		this.analysisOutputDirectory = analysisOutputDirectory;
 	}

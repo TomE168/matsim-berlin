@@ -7,13 +7,9 @@ import org.matsim.api.core.v01.network.Link;
 import org.matsim.vehicles.Vehicle;
 import java.util.*;
 
-public class AnalysePersonID1Handler implements LinkEnterEventHandler {
+public class GetLinksFromAgentId1Handler implements LinkEnterEventHandler {
         private final List<Id<Link>> personLinks = new ArrayList<>();
-
-        public List<Id<Link>> getPersonLinks() {
-            return personLinks;
-        }
-
+        public List<Id<Link>> getPersonLinks() { return personLinks; }
     @Override
     public void handleEvent(LinkEnterEvent e) {
             Id<Vehicle> vehicleId = Id.createVehicleId(1);
